@@ -15,15 +15,31 @@
     <div id="app1"> 
       <p>{{msg}}</p>
       <button v-on:click="msg = 'hello'">change it</button>
+      <a v-bind:href="url">百度</a>
+      <div @click="click1">
+        <div @click="click2">
+          click me
+        </div>
+      </div>
     </div>
     <script type="text/javaScript">
       var vm = new Vue({
         el: '#app1', 
         data:{
-            msg:"hello vue"
+            msg:"hello vue",
+            url:"https://www.baidu.com/"
+        },
+        methods: {
+          click1: function (){
+            console.log("111111111111");
+            
+          },
+          click2: function name(params) {
+            console.log("2222222222222");
+            
+          }
+          }
         }
-
-      }
       )
     </script>
     <!-- built files will be auto injected -->
