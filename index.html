@@ -26,7 +26,18 @@
         </div>
       </div>
     </div>
+    <div id = "app-3">
+      <p v-if="condition">现在看到我了把</p>
+    </div>
     <script type="text/javaScript">
+      var app3 = new Vue({
+        el: '#app-3',
+        data () {
+          return {
+            condition:false
+          }
+        }
+      })
       
       var vm = new Vue({
         el: '#app1', 
