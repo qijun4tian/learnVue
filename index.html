@@ -13,6 +13,17 @@
       <strong>We're sorry but first_vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app1">
+<!--      v-if-->
+      <ul id="ul1" @focus="focusMsg">
+        <li v-for="item1,index1 in items">
+          {{index1}}{{item1.msg}}
+        </li>
+      </ul>
+      <ul>
+        <li v-for="value,key in object">
+          {{key}} : {{value}}
+        </li>
+      </ul>
       <P>{{msg1}}</P>
       <p>{{msg}}</p>
       <p>{{reverseMsg2}}</p>
@@ -20,6 +31,15 @@
       <button v-on:click="msg = 'hello'">change it</button>
       <p v-if="seen">你现在看到了吗</p>
       <a v-bind:href="url">百度</a>
+      <a v-bind:href="url"></a>
+<!--      绑定css-->
+      <div id="app4" class="test" v-bind:class = "{active: isActive, green: isGreen}"
+      style="width: 200px; height: 300px; text-align: center; line-height: 200px;">
+        hi vue
+        <div :style="{active: isActive, green: isGreen}">
+          hi vue2
+        </div>
+      </div>
       <div @click="click1">
         <div @click="click2">
           click me
@@ -30,6 +50,13 @@
       <p v-if="condition">现在看到我了把</p>
     </div>
     <script type="text/javaScript">
+      var app4 = new Vue({
+        el: '#app4',
+        data:{
+          isActive : true,
+          isGreen: true
+        }
+      })
       var app3 = new Vue({
         el: '#app-3',
         data () {
@@ -45,7 +72,16 @@
             msg:"hello vue",
             msg1:"hellp vue1",
             url:"https://www.baidu.com/",
-            seen: false
+            seen: false,
+            items:[
+              {msg:"1111"},
+              {msg: "2222"}
+            ],
+          object:{
+              a1:1,
+              a2:2,
+              a3:3
+          }
         },
         methods: {
           click1: function (){
@@ -59,17 +95,26 @@
           reverseMsg1: function() {
             console.log("1111111111");
             this.msg1 = this.msg1.split('').reverse().join('')
+          },
+          focusMsg:function () {
+            console.log("xxxxxxxx");
           }
         },
         computed: {
           reverseMsg2:function name(params) {
             return this.msg.split("").reverse().join("")
           }
+        },
+        created:function () {
+
         }
       }
       )
     </script>
     <style type="text/css">
+    .test{font-size: 30px;}
+    .active{background: red}
+    .green{color: green}
     .red{color: red}
     .blue{color: blue; font-size: 100px}
     </style>

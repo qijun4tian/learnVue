@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js" type="text/javaScript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+    <div id="example-1">
+        <input v-model="message" placeholder="edit me">
+        <br>
+        <br>
+        <p>Message is : {{ message }}</p>
+        <br>
+        <button @click="submit">提交</button>
+        <button-counter></button-counter>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    Vue.component('button-counter',{
+        data: function () {
+            return {
+                counter: 0
+            }
+        },
+        template:' <button v-on:click="counter++">you click me {{ counter }} times</button>'
+    })
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            counter: 0,
+            message: ""
+        },
+        methods:{
+            submit: function () {
+                alert(this.message);
+            }
+        }
+    });
+</script>
+</html>
