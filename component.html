@@ -13,7 +13,9 @@
         <p>Message is : {{ message }}</p>
         <br>
         <button @click="submit">提交</button>
+        <br>
         <button-counter></button-counter>
+        <test></test>
     </div>
 </div>
 </body>
@@ -35,6 +37,11 @@
         methods:{
             submit: function () {
                 alert(this.message);
+            }
+        },
+        components:{
+            test:{
+                template: "<h2>h2..</h2>"
             }
         }
     });

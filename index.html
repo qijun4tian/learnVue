@@ -26,12 +26,12 @@
       </ul>
       <P>{{msg1}}</P>
       <p>{{msg}}</p>
-      <p>{{reverseMsg2}}</p>
+      <p>{{reverseMsg2}}<span style="color: green">hello</span></p>
       <button @click="reverseMsg1">反转消息</button>
       <button v-on:click="msg = 'hello'">change it</button>
       <p v-if="seen">你现在看到了吗</p>
-      <a v-bind:href="url">百度</a>
-      <a v-bind:href="url"></a>
+      <a :href="url">我的{{urlName}}</a>
+      <a :href="url">{{urlName}}</a>
 <!--      绑定css-->
       <div id="app4" class="test" v-bind:class = "{active: isActive, green: isGreen}"
       style="width: 200px; height: 300px; text-align: center; line-height: 200px;">
@@ -69,6 +69,7 @@
       var vm = new Vue({
         el: '#app1', 
         data:{
+            urlName:"百度",
             msg:"hello vue",
             msg1:"hellp vue1",
             url:"https://www.baidu.com/",
